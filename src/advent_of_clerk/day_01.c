@@ -12,7 +12,7 @@ typedef struct State {
   int state;
   unsigned int curSum;
   unsigned int curNumberBeingParsed;
-  int maxes[3];
+  unsigned int maxes[3];
 } State;
 
 void update_maxes(State *s) {
@@ -44,7 +44,7 @@ void advance_state(State *s, char c) {
       s->curNumberBeingParsed = 0;
       s->state = STATE_NL;
     } else {
-      printf("Unreachable %d", __LINE__);
+      printf("Unreachable %u", __LINE__);
     }
     break;
   case STATE_NL:
@@ -58,15 +58,15 @@ void advance_state(State *s, char c) {
       s->curNumberBeingParsed += c - '0';
       s->state = STATE_COLLECT_NUMBER;
     } else {
-      printf("Unreachable %d", __LINE__);
+      printf("Unreachable %u", __LINE__);
     }
     break;
   }
 }
 
 void print_state(char c, State *s) {
-  printf("%c state %d, curNumberBeingParsed %d, curSum %d, maxes"
-         " [%d %d %d]\n",
+  printf("%c state %u, curNumberBeingParsed %u, curSum %u, maxes"
+         " [%u %u %u]\n",
          c, s->state, s->curNumberBeingParsed, s->curSum, s->maxes[0],
          s->maxes[1], s->maxes[2]);
 }
@@ -87,6 +87,6 @@ int main() {
   }
   if (fclose(f))
     perror("Can't close data file");
-  printf("Part 1: %d\n", s.maxes[0]);
-  printf("Part 2: %d\n", s.maxes[0] + s.maxes[1] + s.maxes[2]);
+  printf("Part 1: %u\n", s.maxes[0]);
+  printf("Part 2: %u\n", s.maxes[0] + s.maxes[1] + s.maxes[2]);
 }
