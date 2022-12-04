@@ -1,7 +1,6 @@
 ;; # 🎄 Advent of Clerk: Day 4
 (ns advent-of-clerk.day-01
-  (:require [clojure.string :as str])
-  (:require [clojure.math :as math]))
+  (:require [clojure.string :as str]))
 
 (defn parse-interval [s]
   (->> s
